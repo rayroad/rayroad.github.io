@@ -122,15 +122,24 @@
     <script src="js/swiper.animate1.0.2.min.js"></script>
     <script src="js/qrcode.min.js"></script>
     <script src="http://tools.smarket.net.cn/V2/Scripts/jweixin-1.0.0.js"></script>
-    <script type="text/javascript" src="http://tools.smarket.net.cn/V2/Scripts/wxshare.js?v=17"></script>
+    <script src="js/wxShare.js"></script>
     <script>
+        var shareInfo = {
+            title:"邀请函",
+            desc:"智营 · 志远 · 致未来",
+            link:"http://app.uao.so/Projects/SINOBASE/20160415/index.html",
+            imgUrl:"http://app.uao.so/Projects/SINOBASE/20160415/100.jpg"
+        };
 
         $(function(){
             new FastClick(document.body);
             var uid = getParameterByName('uid');
-            getUname(uid);
-            makeCode(uid);
+            setUname(uid);
+            shareInfo.link = shareInfo.link + "?uid="+uid;
+            console.log(shareInfo.link)
+            wxShare(wx,shareInfo);
         })
+
 
 
         var qrcode = new QRCode(document.getElementById("qrcode"), {
@@ -173,18 +182,30 @@
 
         function getUname(uid) {
           if(!uid)return;
+          var uname = '';
           $.ajax({
             url:'./js/users.json',
             dataType:'json',
+            async:false,
             success:function (users) {
-              var uname = (users[uid]).split('').join('<br />');
-              $("#uname").html(uname);
+              uname = users[uid];
             }
           })
+          return uname;
         }
+
+        function setUname(uid){
+            var uname = getUname(uid).split('').join('<br />');
+            $("#uname").html(uname);
+        }
+
         function makeCode(uid) {
           if (!uid)return;
           qrcode.makeCode(uid);
+        }
+
+        function setWxShare(wx,shareInfo){
+
         }
     </script>
 
