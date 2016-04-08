@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="./odometer-theme-minimal.css">
+  <style>
+    body{
+       font-size:80px;
+       font-family: "微软雅黑";
+    }
+  </style>
+</head>
+<body>
+  <div id="odometer"></div>
+  <script src="http://cdn.bootcss.com/jquery/1.12.1/jquery.js"></script>
+    <script src="./odometer.min.js"></script>
+  <script>
+    window.odometerOptions = {
+      auto: false,
+      duration: 40000
+    }
+    var OdometerValue = 0;
+    var el = document.querySelector('#odometer');
+    var Odometer = new Odometer({
+      el: el,
+      format: 'd',
+      theme: 'minimal',
+      value: OdometerValue
+    });
+    Odometer.render();
+    Odometer.update(2100573);
+  </script>
+</body>
+</html>
