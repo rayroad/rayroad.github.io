@@ -28,7 +28,7 @@ function positionNums() {
 	// odometerNumHeight = $('#ones .odometer-num-0').outerHeight();
 	var odometerNumHeight = $('.odometer-box').outerHeight();
 	var odometerNumWidth = $('.odometer-box').outerWidth();
-	var fontSize = (odometerNumWidth+10) >> 0;
+	var fontSize = (odometerNumWidth+46) >> 0;
 	$(".odometer-nums li").css({"height":odometerNumHeight+"px","lineHeight":odometerNumHeight+"px","fontSize":fontSize+"px"})
 	singleColHeight = odometerNumHeight*10;
 
