@@ -16,7 +16,7 @@ var odometerPlaces = [
   'fuck-ton'
 ];
 var odometerSpeed = 18000;
-
+var animated = false;
 function positionNums() {
   var odometerNumHeight = $('.odometer-box').outerHeight();
   var odometerNumWidth = $('.odometer-box').outerWidth();
@@ -35,12 +35,13 @@ function positionNums() {
 
 function animateNums() {
   for(var i = 0; i < odometerMilesStr.length; i++){
-    $('#'+odometerPlaces[i]+' .odometer-nums').animate({
+    $('#'+odometerPlaces[i]+' .odometer-nums').stop().animate({
       top: -window.odometerPositions[i]+'px'
-    }, odometerSpeed, 'easeOutQuad');
+    }, odometerSpeed, 'easeOutQuad',function () {
+      animated = true;
+    });
   }
-  odometerSpeed = 800;
-  $window.unbind('scroll');
+  //odometerSpeed = 800;
 }
 
 jQuery(window).load(function() {
@@ -64,4 +65,8 @@ $(document).keyup(function(e){
 
 $(window).resize(function() {
   positionNums();
+  if(animated){
+    odometerSpeed = 800;
+  }
+  animateNums();
 })
