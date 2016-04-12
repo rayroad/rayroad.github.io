@@ -1,0 +1,67 @@
+*{
+  margin:0;
+  padding: 0;
+}
+body {
+  background: #002046;
+  font-family: arial, san-serif;
+  color: #fff;
+}
+.section{
+  background: url('../images/bg.jpg') no-repeat center;
+  background-size: contain;
+  width: 100%;
+  position: absolute;
+  top: 50%; left: 0;
+  -webkit-transform: translate(0,-50%);
+      -ms-transform: translate(0,-50%);
+          transform: translate(0,-50%);
+}
+.section::before{
+  content: "";
+  display: block;
+  padding-top: 25%;
+}
+.odometer {
+  border-top:3px solid rgba(255,255,255,0.6);
+  border-bottom:3px solid rgba(255,255,255,0.6);
+  position: absolute;
+  height: 28%;
+  padding: 0 1%;
+  width:26%;
+  top:46%;
+  display: inline-block;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+
+}
+.odometer-box {
+  flex-grow:1;
+  overflow: hidden;
+  position: relative;
+}
+#ones {
+  padding-right: 0;
+  background: none;
+}
+.odometer-nums {
+  list-style: none;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.odometer-nums > li {
+  font-size: 50px;
+  font-family: Impact;
+}
