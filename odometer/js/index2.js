@@ -86,16 +86,17 @@ jQuery(window).load(function() {
 
 $(document).keyup(function(e){
   var curKey = e.which;
-  if(curKey==13){
+  if(curKey==118){
     if(!animated){
       $(".odometer-nums-list").addClass("domoveup");
       animated = true;
-    }else{
-      if(!animateNumsed){
-        $(".odometer-nums-list").removeClass("domoveup");
-        animateNums();
-        animated = false;
-      }
+    }
+  }
+  if(curKey==119){
+    if(!animateNumsed){
+      $(".odometer-nums-list").removeClass("domoveup");
+      animateNums();
+      animated = false;
     }
   }
 });
