@@ -18,7 +18,7 @@ var odometerPlaces = [
   'billions',
   'fuck-ton'
 ];
-var odometerSpeed = 60000;
+var odometerSpeed = 4000;
 var animated = false;
 var animateNumsed = false;
 
@@ -52,17 +52,30 @@ function animateNums() {
   //odometerSpeed = 800;
 }
 
+function Marquee(i) {
+  var col  = $('#'+odometerPlaces[i]+' .odometer-nums').get(0);
+  var cola = $('#'+odometerPlaces[i]+' .odometer-nums-list').eq(0).get(0);
+  var colb = $('#'+odometerPlaces[i]+' .odometer-nums-list').eq(1).get(0);
+  if(colb.offsetHeight-col.scrollTop<=0)
+    col.scrollTop-=cola.offsetHeight;
+  else{
+    col.scrollTop--;
+  }
+}
 
 function makeHtml() {
   $('.odometer').empty();
   for(var i = 0; i < odometerMilesStr.length; i++){
-    $('.odometer').prepend('<div id="'+odometerPlaces[i]+'" class="odometer-box"><ul class="odometer-nums"></ul></div>');
+    $('.odometer').prepend('<div id="'+odometerPlaces[i]+'" class="odometer-box"><div class="odometer-nums"><ul class="odometer-nums-list"></ul><ul class="odometer-nums-list"></ul></div></div>');
+    // var numOfNums = odometerMilesStr.length;
+    // for(var x = 0; x < numOfNums; x++){
+    //   for(var y = 0; y < 10; y++){
+    //     $('.odometer-nums-list').append('<li class="odometer-num-'+y+'">'+y+'</li>');
+    //   }
+    // }
   }
-  var numOfNums = Math.pow(odometerMilesStr.length,2);
-  for(var x = 0; x < numOfNums; x++){
-    for(var y = 0; y < 10; y++){
-      $('.odometer-nums').append('<li class="odometer-num-'+y+'">'+y+'</li>');
-    }
+  for(var y = 0; y < 10; y++){
+    $('.odometer-nums-list').append('<li class="odometer-num-'+y+'">'+y+'</li>');
   }
 }
 
@@ -75,12 +88,11 @@ $(document).keyup(function(e){
   var curKey = e.which;
   if(curKey==13){
     if(!animated){
-      animateNums();
+      $(".odometer-nums-list").addClass("domoveup");
       animated = true;
-
     }else{
       if(!animateNumsed){
-        odometerSpeed = 4000;
+        $(".odometer-nums-list").removeClass("domoveup");
         animateNums();
         animated = false;
       }
