@@ -46,12 +46,6 @@ body {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
-
-  -webkit-animation: toScale .8s ease-in-out 1.6s both;
-  -moz-animation: toScale .8s ease-in-out 1.6s both;
-  animation: toScale .8s ease-in-out 1.6s both;
-
-
 }
 .odometer-box {
   flex-grow:1;
@@ -83,9 +77,6 @@ body {
   background: url(../images/11.png) no-repeat 52% center;
   background-size: contain;
   transform:translate(-100%,0);
-  -webkit-animation: move .8s ease-in-out .4s both;
-  -moz-animation: move .8s ease-in-out .4s both;
-  animation: move .8s ease-in-out .4s both;
 }
 .bg2{
   position: absolute;
@@ -96,9 +87,6 @@ body {
   background: url(../images/12.png) no-repeat 48% center;
   background-size: contain;
   transform:translate(100%,0);
-  -webkit-animation: move .8s ease-in-out .4s both;
-  -moz-animation: move .8s ease-in-out .4s both;
-  animation: move .8s ease-in-out .4s both;
 }
 
 .bg3{
@@ -110,15 +98,36 @@ body {
   background: url(../images/13.png) no-repeat center 0;
   background-size: contain;
   transform:translate(0,-100%);
-  -webkit-animation: moveb .8s ease-in-out .8s both;
-  -moz-animation: moveb .8s ease-in-out .8s both;
-  animation: moveb .8s ease-in-out .8s both;
+  -webkit-transition: all .8s ease-in-out .8s;
+  -moz-transition: all .8s ease-in-out .8s;
+  transition: all .8s ease-in-out .8s;
 }
 
 .domoveup{
   -webkit-animation: moveup .8s linear infinite;
   -moz-animation: moveup .8s linear infinite;
   animation: moveup .8s linear infinite;
+}
+.bg1, .bg2{
+  -webkit-transition: all .8s ease-in-out .4s;
+  -moz-transition: all .8s ease-in-out .4s;
+  transition: all .8s ease-in-out .4s;
+}
+
+.start .odometer{
+  -webkit-animation: toScale .6s ease-in-out 1.6s both;
+  -moz-animation: toScale .6s ease-in-out 1.6s both;
+  animation: toScale .6s ease-in-out 1.6s both;
+}
+.start .bg1, .start .bg2{
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  transform: translateX(0);
+}
+.start .bg3{
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  transform: translateY(0);
 }
 
 @-webkit-keyframes toScale {

@@ -1,3 +1,8 @@
+var started = false;
+var animated = false;
+var end = false;
+var animateNumsed = false;
+
 var odometerMiles = 21000573;
 window.odometerPositions = new Array();
 var odometerMilesStr = odometerMiles.toString();
@@ -19,8 +24,6 @@ var odometerPlaces = [
   'fuck-ton'
 ];
 var odometerSpeed = 4000;
-var animated = false;
-var animateNumsed = false;
 
 function positionNums() {
   var odometerNumHeight = $('.odometer-box').outerHeight();
@@ -39,13 +42,10 @@ function positionNums() {
 }
 
 function animateNums() {
-  if(animated){
-    easing = 'easeOutCirc'
-  }
   for(var i = 0; i < odometerMilesStr.length; i++){
     $('#'+odometerPlaces[i]+' .odometer-nums').stop().animate({
       top: -window.odometerPositions[i]+'px'
-    }, odometerSpeed, easing,function () {
+    }, odometerSpeed, 'easeOutCirc',function () {
       animateNumsed = true;
     });
   }
@@ -86,26 +86,39 @@ jQuery(window).load(function() {
 
 $(document).keyup(function(e){
   var curKey = e.which;
-  if(curKey==118){
-    if(!animated){
-      $(".odometer-nums-list").addClass("domoveup");
-      animated = true;
+
+  if(curKey==120){
+    if(!started){
+      started = true;
+      $(".section").addClass("start");
+    }else{
+      if(animateNumsed || !animated){
+        $(".section").removeClass("start");
+        makeHtml();
+        positionNums();
+        started = false;
+        animated = false;
+        end = false;
+        animateNumsed = false;
+      }
     }
   }
+
+  if(curKey==118){
+    if(started && !animated){
+      animated = true;
+      $(".odometer-nums-list").addClass("domoveup");
+    }
+  }
+  
   if(curKey==119){
-    if(animated && !animateNumsed){
+    if(started && animated && !end){
+      end = false;
       $(".odometer-nums-list").removeClass("domoveup");
       animateNums();
     }
   }
-  if(curKey==120){
-    if(animateNumsed){
-      makeHtml();
-      positionNums();
-      animated = false;
-      animateNumsed = false;
-    }
-  }
+
 });
 
 $(window).resize(function() {
