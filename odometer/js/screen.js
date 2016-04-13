@@ -1,6 +1,6 @@
 var started = false;
 var animated = false;
-var end = false;
+var ended = false;
 var animateNumsed = false;
 
 var odometerMiles = 21000573;
@@ -98,7 +98,7 @@ $(document).keyup(function(e){
         positionNums();
         started = false;
         animated = false;
-        end = false;
+        ended = false;
         animateNumsed = false;
       }
     }
@@ -110,10 +110,10 @@ $(document).keyup(function(e){
       $(".odometer-nums-list").addClass("domoveup");
     }
   }
-  
+
   if(curKey==119){
-    if(started && animated && !end){
-      end = false;
+    if(started && animated && !ended){
+      ended = true;
       $(".odometer-nums-list").removeClass("domoveup");
       animateNums();
     }

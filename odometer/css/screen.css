@@ -108,6 +108,45 @@ body {
   -moz-animation: moveup .8s linear infinite;
   animation: moveup .8s linear infinite;
 }
+
+.paused{
+  -webkit-animation-play-state:paused;
+  animation-play-state:paused;
+}
+#ones .domoveup{
+  animation-delay: .1s;
+}
+#tens .domoveup{
+  animation-delay: .2;
+}
+#hundreds .domoveup{
+  animation-delay: .3s;
+}
+#thousands .domoveup{
+  animation-delay: .4s;
+}
+#ten-thousands .domoveup{
+  animation-delay: .5s;
+}
+#hundred-thousands .domoveup{
+  animation-delay: .6s;
+}
+#millions .domoveup{
+  animation-delay: .7s;
+}
+#ten-millions .domoveup{
+  animation-delay: .8s;
+}
+#hundred-millions .domoveup{
+  animation-delay: .9s;
+}
+#billions .domoveup{
+  animation-delay: 1.0s;
+}
+#fuck-ton .domoveup{
+  animation-delay: 1.1s;
+}
+
 .bg1, .bg2{
   -webkit-transition: all .8s ease-in-out .4s;
   -moz-transition: all .8s ease-in-out .4s;
