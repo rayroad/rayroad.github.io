@@ -93,10 +93,17 @@ $(document).keyup(function(e){
     }
   }
   if(curKey==119){
-    if(!animateNumsed){
+    if(animated && !animateNumsed){
       $(".odometer-nums-list").removeClass("domoveup");
       animateNums();
+    }
+  }
+  if(curKey==120){
+    if(animateNumsed){
+      makeHtml();
+      positionNums();
       animated = false;
+      animateNumsed = false;
     }
   }
 });
@@ -109,5 +116,4 @@ $(window).resize(function() {
     }
     animateNums();
   }
-
 })
