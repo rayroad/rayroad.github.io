@@ -8,7 +8,8 @@ body {
   color: #fff;
 }
 .section{
-  background: url('../images/bg.jpg') no-repeat center;
+  overflow: hidden;
+  background: url('../images/bg2.jpg') no-repeat center;
   background-size: contain;
   width: 100%;
   position: absolute;
@@ -23,6 +24,8 @@ body {
   padding-top: 25%;
 }
 .odometer {
+  transform: scale(0);
+  z-index: 20;
   border-top:3px solid rgba(255,255,255,0.6);
   border-bottom:3px solid rgba(255,255,255,0.6);
   position: absolute;
@@ -44,6 +47,11 @@ body {
   -ms-flex-pack: justify;
   justify-content: space-between;
 
+  -webkit-animation: toScale .8s ease-in-out 1.6s both;
+  -moz-animation: toScale .8s ease-in-out 1.6s both;
+  animation: toScale .8s ease-in-out 1.6s both;
+
+
 }
 .odometer-box {
   flex-grow:1;
@@ -64,4 +72,76 @@ body {
 .odometer-nums > li {
   font-size: 50px;
   font-family: Impact;
+}
+
+.bg1{
+  position: absolute;
+  z-index: 11;
+  width: 100%;
+  top:0;
+  bottom: 0;
+  background: url(../images/11.png) no-repeat 52% center;
+  background-size: contain;
+  transform:translate(-100%,0);
+  -webkit-animation: move .8s ease-in-out .4s both;
+  -moz-animation: move .8s ease-in-out .4s both;
+  animation: move .8s ease-in-out .4s both;
+}
+.bg2{
+  position: absolute;
+  z-index: 12;
+  width: 100%;
+  top:0;
+  bottom: 0;
+  background: url(../images/12.png) no-repeat 48% center;
+  background-size: contain;
+  transform:translate(100%,0);
+  -webkit-animation: move .8s ease-in-out .4s both;
+  -moz-animation: move .8s ease-in-out .4s both;
+  animation: move .8s ease-in-out .4s both;
+}
+
+.bg3{
+  position: absolute;
+  z-index: 13;
+  width: 100%;
+  top:0;
+  bottom: 0;
+  background: url(../images/13.png) no-repeat center 0;
+  background-size: contain;
+  transform:translate(0,-100%);
+  -webkit-animation: moveb .8s ease-in-out .8s both;
+  -moz-animation: moveb .8s ease-in-out .8s both;
+  animation: moveb .8s ease-in-out .8s both;
+}
+
+@-webkit-keyframes toScale {
+  to { -webkit-transform: scale(1); }
+}
+@-moz-keyframes toScale {
+  to { -moz-transform: scale(1); }
+}
+@keyframes toScale {
+  to { transform: scale(1); }
+}
+
+@-webkit-keyframes move {
+  to { -webkit-transform: translateX(0); }
+}
+@-moz-keyframes move {
+  to { -moz-transform: translateX(0); }
+}
+@keyframes move {
+  to { transform: translateX(0); }
+}
+
+
+@-webkit-keyframes moveb {
+  to { -webkit-transform: translateY(0); }
+}
+@-moz-keyframes moveb {
+  to { -moz-transform: translateY(0); }
+}
+@keyframes moveb {
+  to { transform: translateY(0); }
 }
